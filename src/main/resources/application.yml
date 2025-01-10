@@ -1,6 +1,17 @@
 server:
   port: 8080
 
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+
 spring:
   security:
     oauth2:
@@ -13,7 +24,7 @@ spring:
         - id: spring-6-rest-mvc
           uri: http://localhost:8081
           predicates:
-            - Path=/api/v1/*
+            - Path=/api/v1/**
         - id: spring-6-reactive
           uri: http://localhost:8082
           predicates:
